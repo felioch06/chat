@@ -1,0 +1,33 @@
+*{
+    margin:0px;
+}
+
+.banner{
+    background-color: #35BDB2 !important;
+    padding: 10px 20px 1px 20px;
+    font-size: 15px !important;
+}
+
+footer{
+    background-color: #35BDB2 !important;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.mg-20-top-bottom{
+    margin: 20px 0px 20px 0px !important;
+}
+
+.mg-10-top{
+    margin-top: 10px !important;
+}
+
+.mg-10-bottom{
+    margin-bottom: 10px !important;
+}
+
+.pd-20-top-bottom{
+    padding-top: 30px!important;
+    padding-bottom: 40px!important;
+}
