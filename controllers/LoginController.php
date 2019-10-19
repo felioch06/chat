@@ -5,7 +5,7 @@
 
         public function __construct(){
             try{
-                $this->usuario = new Usuarios();
+                $this->usuario = new Usuario();
             }catch(Exception $e){
                 die($e->getMessage());
             }
@@ -17,7 +17,7 @@
 
         public function auth(){
             $correo = $_POST['correo'];
-            $contra = $_POST['contra'];
+            $contra = md5($_POST['contra']);
 
             $usuario = $this->usuario->request($correo, $contra);
             if($correo == $usuario->correo && $contra == $usuario->contra){
@@ -25,6 +25,14 @@
                 header('location:?class=Usuarios&view=index');
             }else{
                 header('location:?class=Login&view=login&error=error');            }
+        }
+
+        public function destroy(){
+            session_destroy();
+
+            header('location:?class=Login&view=login');
+
+            exit;
         }
 
     }

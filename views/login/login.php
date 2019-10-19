@@ -37,7 +37,7 @@
         <div class="field">
           <div class="ui left icon big input">
             <i class="lock icon"></i>
-            <input type="password" name="contra" placeholder="Contraseña">
+            <input type="password" name="contra" placeholder="Contraseña" >
           </div>
         </div>
         <button class="ui fluid large teal submit mg-10-bottom animated fade button">
