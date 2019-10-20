@@ -1,4 +1,4 @@
-<div class="ui secondary pointing banner menu">
+<div class="ui white secondary pointing banner menu">
   <a class="active item">
     Home
   </a>
@@ -8,7 +8,7 @@
   <a class="ui item">
       <?php echo $_SESSION['nombres']->nick_name?>
     </a>
-    <a href="?class=Login&view=destroy" class="ui item">
+    <a href="?class=Security&view=salir" class="ui item">
       Logout
     </a>
   </div>

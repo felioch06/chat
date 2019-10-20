@@ -27,13 +27,7 @@
                 header('location:?class=Login&view=login&error=error');            }
         }
 
-        public function destroy(){
-            session_destroy();
-
-            header('location:?class=Login&view=login');
-
-            exit;
-        }
+        
 
     }
 
