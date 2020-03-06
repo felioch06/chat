@@ -21,7 +21,8 @@
 
                         <?php 
                         $id = $_REQUEST['id'];
-                        $mensajes = parent::mensajesUsuarios($id); 
+                        $id_usuario_para = $_REQUEST['id_para'];
+                        $mensajes = parent::consultaMensajesUsuario($id); 
                             foreach($mensajes as $r){ 
                         ?>
 
@@ -47,9 +48,9 @@
 
                     <div class="row">
                         <div class="sixteen wide column ">
-                            <form action="" class="input-chat" >
+                            <form action="?class=Usuarios&view=newMensaje&id=<?php echo $id ?>&id_para=<?php echo $id_usuario_para ?>" class="input-chat" method="post" >
                                 <div class="ui action input-background big input">
-                                    <input type="text" class="input-bar" placeholder="Escribe un mensaje...">
+                                    <input type="text" class="input-bar" name="mensaje" placeholder="Escribe un mensaje...">
                                     <button class="ui icon button">
                                         <i class="paper plane icon"></i>
                                     </button>

@@ -44,35 +44,68 @@
             }
         }
 
-        public function stored($fecha){
+        public function stored($fk_usuario_sala_de,$fk_usuario_sala_para,$fecha){
             try{
-                $str = parent::conectar()->prepare("INSERT INTO sala(fk_tipo,fecha) VALUES( 1,'$fecha')");
+                $str = parent::conectar()->prepare("INSERT INTO sala(fk_tipo,fk_usuario_sala_de,fk_usuario_sala_para,fecha) VALUES( 1,$fk_usuario_sala_de,$fk_usuario_sala_para,'$fecha')");
                 $str->execute();
             }catch(Exception $e){
                 die('mal'.$e->getMessage());
             }
         }
 
-        public function storedSalaUsuario($fk_sala, $fk_usuario){
+        public function storedNewMensaje($fk_usuario,$fk_usuario_para,$fk_sala,$mensaje,$fecha_enviado,$hora_enviado){
             try{
-                $str = parent::conectar()->prepare("INSERT INTO sala_usuario(fk_sala,fk_usuario) VALUES( $fk_sala,$fk_usuario)");
+                $str = parent::conectar()->prepare("INSERT INTO mensajes(fk_usuario,fk_usuario_para,fk_sala,mensaje,fecha_enviado,hora_enviado) VALUES(?,?,?,?,?,?)");
+                $str->bindParam(1,$fk_usuario,PDO::PARAM_INT);
+                $str->bindParam(2,$fk_usuario_para,PDO::PARAM_INT);
+                $str->bindParam(3,$fk_sala,PDO::PARAM_INT);
+                $str->bindParam(4,$mensaje,PDO::PARAM_STR);
+                $str->bindParam(5,$fecha_enviado,PDO::PARAM_STR);
+                $str->bindParam(6,$hora_enviado,PDO::PARAM_STR);
                 $str->execute();
             }catch(Exception $e){
                 die('mal'.$e->getMessage());
             }
         }
 
-        public function searchSala($id){
+        public function consultaMensajesUsuario($id_sala){
             try{
-              $q=parent::conectar()->prepare("SELECT * FROM sala_usuario LEFT JOIN sala on sala.id_sala = sala_usuario.fk_sala WHERE fk_sala = ?");
-              $q->bindParam(1,$id,PDO::PARAM_INT);
+                $str = parent::conectar()->prepare("SELECT * FROM mensajes WHERE fk_sala = ? ");
+                $str->bindParam(1,$id_sala,PDO::PARAM_INT);
+                $str->execute();
+                return $str->fetchAll(PDO::FETCH_OBJ);
+            }catch(Exception $e){
+                die('mal'.$e->getMessage());
+            }
+        }
+
+        public function countSala($fk_usuario_sala_de, $fk_usuario_sala_para){
+            try{
+              $q=parent::conectar()->prepare("SELECT COUNT(*) AS total_salas FROM sala WHERE fk_usuario_sala_de = ? AND fk_usuario_sala_para = ? OR fk_usuario_sala_de = ? AND fk_usuario_sala_para = ?");
+              $q->bindParam(1,$fk_usuario_sala_de,PDO::PARAM_INT);
+              $q->bindParam(2,$fk_usuario_sala_para,PDO::PARAM_INT);
+              $q->bindParam(3,$fk_usuario_sala_para,PDO::PARAM_INT);
+              $q->bindParam(4,$fk_usuario_sala_de,PDO::PARAM_INT);
+              $q->execute();
+              return $q->fetchAll(PDO::FETCH_OBJ);
+            }catch(Exception $e){
+               die($e->getMessage());
+            }
+        }
+        
+        public function searchSala($fk_usuario_sala_de, $fk_usuario_sala_para){
+            try{
+              $q=parent::conectar()->prepare("SELECT * FROM sala WHERE fk_usuario_sala_de = ? AND fk_usuario_sala_para = ? OR fk_usuario_sala_de = ? AND fk_usuario_sala_para = ?");
+              $q->bindParam(1,$fk_usuario_sala_de,PDO::PARAM_INT);
+              $q->bindParam(2,$fk_usuario_sala_para,PDO::PARAM_INT);
+              $q->bindParam(3,$fk_usuario_sala_para,PDO::PARAM_INT);
+              $q->bindParam(4,$fk_usuario_sala_de,PDO::PARAM_INT);
               $q->execute();
               return $q->fetch(PDO::FETCH_OBJ);
             }catch(Exception $e){
                die($e->getMessage());
             }
         }
-        
 
         public function mensajesUsuarios($mensajes){
             try{

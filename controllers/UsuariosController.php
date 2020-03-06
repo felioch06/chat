@@ -17,23 +17,34 @@
             require_once('views/usuario/index.php');
         }
 
+        public function newMensaje(){
+            $fk_usuario = $_SESSION['nombres']->id_usuario;
+            $fk_usuario_para = $_REQUEST['id_para'];
+            $fk_sala = $_REQUEST['id']; 
+            $mensaje = $_POST['mensaje'];
+            $fecha = date('y-m-d');
+            $hora = date('G:i:s');
+            parent::storedNewMensaje($fk_usuario, $fk_usuario_para,$fk_sala,$mensaje,$fecha,$hora);
+            header('location:?class=Usuarios&view=index&id='.$fk_sala.'&id_para='.$fk_usuario_para);
+        }
+
         public function newChat(){
             $id = $_REQUEST['id'];
             $mio = $_SESSION['nombres']->id_usuario;
         
-            $sala = parent::searchSala($id);
-            if($id == @$sala->id_sala){
-                echo "existe";
-                $mensajes = parent::mensajesUsuarios($sala->id_sala);
+            $sala = parent::countSala($mio, $id);
+
+            $cantidadSalas=$sala[0]->total_salas;
+
+            if($cantidadSalas == 0){
+                $fecha = date('y-m-d G:i:s');
+                parent::stored($mio, $id, $fecha);
+                $searchSala = parent::searchSala($mio,$id);
+                header('location:?class=Usuarios&view=index&id='.$searchSala->id_sala.'&id_para='.$id);
             }else{
-                $fecha = date('y-m-d g:i:s');
-                parent::stored($fecha);
-                $consultaSala = parent::consultaSala();
-                $cantidadSalas = count($consultaSala);
-                echo $cantidadSalas;
-                parent::storedSalaUsuario($cantidadSalas, $id);
-            }
-                        
+                $searchSala = parent::searchSala($mio,$id);
+                header('location:?class=Usuarios&view=index&id='.$searchSala->id_sala.'&id_para='.$id);
+            }                 
         }
 
         public function searchAjax(){
