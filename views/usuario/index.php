@@ -1,6 +1,6 @@
 <?php require_once('views/layouts/header.php') ?>
 
-<body>
+<body onload="readyStateChanged()">
     <?php require_once('views/layouts/banner.php') ?>
 
     <div class="ui stackable grid">
@@ -15,43 +15,24 @@
                 </div>
             </div>
 
-            <div class="ten wide column">
+            <div class="ten wide column ">
                 <div class="ui stackable grid">
-                    <div class="row">
-
-                        <?php 
-                        $id = $_REQUEST['id'];
-                        $id_usuario_para = $_REQUEST['id_para'];
-                        $mensajes = parent::consultaMensajesUsuario($id); 
-                            foreach($mensajes as $r){ 
+                    <div class="row mg-30-bottom" id="mensajeResponse">
+                        <?php
+                            $id = $_REQUEST['id'];
+                            $id_usuario_para = $_REQUEST['id_para'];
                         ?>
 
-                        <?php if($_SESSION['nombres']->id_usuario == $r->fk_usuario){ ?>
-                        <div class="sixteen wide column">
-                            <div class="chat-segment-primary">
-                                <span><?php echo $r->hora_enviado ?></span>
-                                <br>
-                                <span><?php echo $r->mensaje ?></span>
-                            </div>
-                        </div>
-                            <?php }else { ?>
-
-                        <div class="right floated right aligned thirteen wide column">
-                            <div class="chat-segment-secondary">
-                                <span><?php echo $r->hora_enviado ?></span>
-                                <br>
-                                <span><?php echo $r->mensaje ?></span>
-                            </div>
-                        </div>
-                            <?php  } } ?>
+                        <input type="hidden" value="<?php echo $id ?>" id="id">
+                        <input type="hidden" value="<?php echo $id_usuario_para ?>" id="id_usuario_para">
                     </div>
 
                     <div class="row">
                         <div class="sixteen wide column ">
                             <form action="?class=Usuarios&view=newMensaje&id=<?php echo $id ?>&id_para=<?php echo $id_usuario_para ?>" class="input-chat" method="post" >
                                 <div class="ui action input-background big input">
-                                    <input type="text" class="input-bar" name="mensaje" placeholder="Escribe un mensaje...">
-                                    <button class="ui icon button">
+                                    <input type="text" class="input-bar" name="mensaje" placeholder="Escribe un mensaje..." autocomplete="off">
+                                    <button class="ui icon button" id="buttonMensaje">
                                         <i class="paper plane icon"></i>
                                     </button>
                                 </div>

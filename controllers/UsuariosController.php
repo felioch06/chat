@@ -47,6 +47,33 @@
             }                 
         }
 
+        public function searchMensaje(){
+                        $id = $_REQUEST['id'];
+                        $id_usuario_para = $_REQUEST['id_para'];
+                        $mensajes = parent::consultaMensajesUsuario($id); 
+                            foreach($mensajes as $r){ 
+                        ?>
+
+                        <?php if($_SESSION['nombres']->id_usuario == $r->fk_usuario){ ?>
+                        <div class="sixteen wide column">
+                            <div class="chat-segment-primary">
+                                <span><?php echo $r->hora_enviado ?></span>
+                                <br>
+                                <span><?php echo $r->mensaje ?></span>
+                            </div>
+                        </div>
+                            <?php }else { ?>
+
+                        <div class="right floated right aligned thirteen wide column">
+                            <div class="chat-segment-secondary">
+                                <span><?php echo $r->hora_enviado ?></span>
+                                <br>
+                                <span><?php echo $r->mensaje ?></span>
+                            </div>
+                        </div>
+                            <?php  } } 
+        }
+
         public function searchAjax(){
             $persona = $_POST['busqueda'].'%';
             ?>
@@ -55,7 +82,7 @@
             foreach(parent::searchPersona($persona) as $person){
             ?>
                 
-                <p><a href="?class=Usuarios&view=newChat&id=<?php echo $person->id_usuario ?>"><?php echo $person->nombres ?></a></p>
+                <a href="?class=Usuarios&view=newChat&id=<?php echo $person->id_usuario ?>"><?php echo $person->nombres ?></a>
                 <div class="ui divider"></div>
                 
             <?php

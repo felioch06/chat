@@ -34,6 +34,10 @@ footer {
     margin-bottom: 14px !important;
 }
 
+.mg-30-bottom {
+    margin-bottom: 30px !important;
+}
+
 .mg-10-left {
     margin-left: 10% !important;
 }
@@ -75,7 +79,7 @@ footer {
 }
 
 .result{
-    position: absolute;
+    position: relative;
     width: 100%;
 }
 
@@ -86,5 +90,9 @@ footer {
 @media(max-width: 768px){
     .input-chat{
         width: 96% !important;
+    }
+
+    .chat-segment-secondary{
+        width: 80% !important;
     }
 }

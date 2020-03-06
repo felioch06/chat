@@ -70,7 +70,7 @@
 
         public function consultaMensajesUsuario($id_sala){
             try{
-                $str = parent::conectar()->prepare("SELECT * FROM mensajes WHERE fk_sala = ? ");
+                $str = parent::conectar()->prepare("SELECT * FROM mensajes WHERE fk_sala = ? ORDER BY id_mensaje DESC");
                 $str->bindParam(1,$id_sala,PDO::PARAM_INT);
                 $str->execute();
                 return $str->fetchAll(PDO::FETCH_OBJ);
