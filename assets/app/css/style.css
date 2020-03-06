@@ -1,33 +1,90 @@
-*{
-    margin:0px;
+* {
+    margin: 0px;
 }
 
-.banner{
+a{
+    color: black;
+}
+
+.banner {
     background-color: #35BDB2 !important;
     padding: 10px 20px 1px 20px;
     font-size: 15px !important;
 }
 
-footer{
+footer {
     background-color: #35BDB2 !important;
     text-align: center;
     padding: 20px;
     font-size: 20px;
 }
 
-.mg-20-top-bottom{
+.mg-10-y{
+    margin: 10px 0px;
+}
+.mg-20-top-bottom {
     margin: 20px 0px 20px 0px !important;
 }
 
-.mg-10-top{
+.mg-10-top {
     margin-top: 12px !important;
 }
 
-.mg-10-bottom{
+.mg-10-bottom {
     margin-bottom: 14px !important;
 }
 
-.pd-20-top-bottom{
+.mg-10-left {
+    margin-left: 10% !important;
+}
+
+.pd-20-top-bottom {
     padding-top: 30px!important;
     padding-bottom: 40px!important;
+}
+
+.input-chat{
+    position: fixed !important;
+    bottom: 0%;
+    width: 63%;
+}
+
+.input-background{
+    background-color: #35BDB2;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100% !important;
+}
+
+.chat-segment-primary {
+    width: 80%;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 30px;
+    padding: 8px 20px;
+    background-color: rgba(53, 189, 178, 0.116);
+    margin: 10px 0px;
+}
+
+.chat-segment-secondary {
+    width: 100%;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 30px;
+    padding: 8px 20px;
+    background-color: rgba(170, 170, 170, 0.116);
+    margin: 10px 0px;
+}
+
+.result{
+    position: absolute;
+    width: 100%;
+}
+
+.hidden{
+    display: none !important;
+}
+
+@media(max-width: 768px){
+    .input-chat{
+        width: 96% !important;
+    }
 }
