@@ -7,5 +7,7 @@
     <link rel="icon" type="icon" href="assets/img/ico00.png">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.css"/>
     <link rel="stylesheet" href="assets/app/css/style.css">
+
+
     <title><?php echo $title ?></title>
 </head>

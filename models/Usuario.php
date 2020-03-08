@@ -35,8 +35,9 @@
 
         public function searchPersona($persona){
             try{
-              $q=parent::conectar()->prepare("SELECT * FROM usuarios WHERE nombres LIKE ?");
+              $q=parent::conectar()->prepare("SELECT * FROM usuarios WHERE nick_name LIKE ? OR nombres LIKE ?");
               $q->bindParam(1,$persona,PDO::PARAM_STR);
+              $q->bindParam(2,$persona,PDO::PARAM_STR);
               $q->execute();
               return $q->fetchAll(PDO::FETCH_OBJ);
             }catch(Exception $e){

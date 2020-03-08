@@ -77,12 +77,12 @@
         public function searchAjax(){
             $persona = $_POST['busqueda'].'%';
             ?>
-                <div class="ui info message">
+                <div class="ui red message">
             <?php
             foreach(parent::searchPersona($persona) as $person){
             ?>
                 
-                <a href="?class=Usuarios&view=newChat&id=<?php echo $person->id_usuario ?>"><?php echo $person->nombres ?></a>
+                <a href="?class=Usuarios&view=newChat&id=<?php echo $person->id_usuario ?>"><?php echo $person->nombres ?> (<?php echo $person->nick_name ?>)</a>
                 <div class="ui divider"></div>
                 
             <?php

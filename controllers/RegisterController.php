@@ -8,19 +8,19 @@
             require_once('views/register/register.php');
         }
         public function store(){
-            $nick_name = $_POST['nick_name'];
-            $nombres = $_POST['nombres'];
-            $apellidos = $_POST['apellidos'];
-            $correo = $_POST['correo'];
-            $contra = md5($_POST['contra']);
-            $fecha_creacion = $_POST['fecha_creacion'];
 
+            $nombre_usuario = $_POST['nombre_usuario'];
+            $correo = $_POST['correo'];
+            $pass = md5($_POST['pass']);
+            $foto_perfil = 'assets/img/default_user.jpg';
+            date_default_timezone_set('America/Bogota');
+            $fecha = date('Y-m-d');
             $verify = parent::verify($correo);
             
             if($correo == @$verify->correo){
-                header('location:?class=Register&view=register&error=error');            
+                header('location:?class=Login&view=login&error=error');            
             }else{
-                parent::stored($nick_name,$nombres,$apellidos,$correo, $contra,$fecha_creacion);
+                parent::stored($nombre_usuario,$correo,$pass,$foto_perfil,$fecha);
             
                 header('location:?class=Login&view=login&success=success');
             }

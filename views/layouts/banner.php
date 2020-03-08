@@ -12,14 +12,5 @@
       Logout
     </a>
   </div>
-  <?php }else{ ?>
-    <div class="right menu">
-  <a href="?class=Login&view=login" class="ui item">
-    Iniciar Sesion
-    </a>
-    <a href="?class=Register&view=register" class="ui item">
-      Registrarse
-    </a>
-  </div>
-  <?php } ?>
+  <?php }?>
 </div>

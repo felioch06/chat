@@ -24,7 +24,7 @@
                 $_SESSION['nombres'] = $usuario;
                 header('location:?class=Usuarios&view=index');
             }else{
-                header('location:?class=Login&view=login&error=error');            }
+                header('location:?class=Login&view=login&noExiste');            }
         }
 
         

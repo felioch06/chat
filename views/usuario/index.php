@@ -19,8 +19,8 @@
                 <div class="ui stackable grid">
                     <div class="row mg-30-bottom" id="mensajeResponse">
                         <?php
-                            $id = $_REQUEST['id'];
-                            $id_usuario_para = $_REQUEST['id_para'];
+                            $id = @$_REQUEST['id'];
+                            $id_usuario_para = @$_REQUEST['id_para'];
                         ?>
 
                         <input type="hidden" value="<?php echo $id ?>" id="id">

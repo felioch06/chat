@@ -12,9 +12,9 @@
             }
         }
 
-        public function stored($nick_name,$nombres,$apellidos,$correo,$contra,$fecha_creacion){
+        public function stored($nick_name,$correo,$contra,$avatar,$fecha_creacion){
             try{
-                $str = parent::conectar()->prepare("INSERT INTO usuarios(nick_name,nombres,apellidos,correo,contra,fecha_creacion) VALUES('$nick_name','$nombres','$apellidos','$correo','$contra', '$fecha_creacion')");
+                $str = parent::conectar()->prepare("INSERT INTO usuarios(nick_name,correo,contra,avatar,fecha_creacion) VALUES('$nick_name','$correo','$contra','$avatar','$fecha_creacion')");
                 $str->execute();
             }catch(Exception $e){
                 die('mal'.$e->getMessage());
