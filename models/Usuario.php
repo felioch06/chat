@@ -37,7 +37,7 @@
 
         public function consultaMensajesAntiguos($fk_usuario_para){
             try{
-                $str = parent::conectar()->prepare("SELECT * FROM usuarios LEFT JOIN mensajes ON usuarios.id_usuario = mensajes.fk_usuario WHERE visto = 1 and fk_usuario_para = ? ORDER BY id_mensaje DESC LIMIT 10 ");
+                $str = parent::conectar()->prepare("SELECT * FROM usuarios LEFT JOIN mensajes ON usuarios.id_usuario = mensajes.fk_usuario WHERE visto = 1 and fk_usuario_para = ? ORDER BY id_mensaje DESC LIMIT 5 ");
                 $str->bindParam(1,$fk_usuario_para,PDO::PARAM_INT);
                 $str->execute();
                 return $str->fetchAll(PDO::FETCH_OBJ);

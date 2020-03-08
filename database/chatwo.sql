@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-03-2020 a las 18:41:04
+-- Tiempo de generación: 08-03-2020 a las 19:03:25
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -35,106 +35,35 @@ CREATE TABLE `mensajes` (
   `fk_sala` int(11) NOT NULL,
   `mensaje` text COLLATE utf8_unicode_ci NOT NULL,
   `fecha_enviado` date NOT NULL,
-  `hora_enviado` time NOT NULL
+  `hora_enviado` time NOT NULL,
+  `visto` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `mensajes`
 --
 
-INSERT INTO `mensajes` (`id_mensaje`, `fk_usuario`, `fk_usuario_para`, `fk_sala`, `mensaje`, `fecha_enviado`, `hora_enviado`) VALUES
-(1, 1, 3, 1, 'Hey', '2020-03-06', '24:14:00'),
-(2, 3, 1, 1, 'Hola', '2020-03-06', '24:14:00'),
-(3, 2, 1, 3, 'Holaaaa', '2020-03-06', '28:13:00'),
-(4, 1, 3, 1, 'Como vas?', '2020-03-06', '24:14:00'),
-(5, 3, 1, 1, 'Bien y tu?', '2020-03-06', '16:21:31'),
-(6, 3, 1, 1, 'Todo Bien?', '2020-03-06', '16:21:49'),
-(7, 1, 3, 1, 'si y tu como vas?', '2020-03-06', '16:22:56'),
-(8, 1, 3, 1, 'all fine', '2020-03-06', '16:27:50'),
-(9, 1, 3, 1, 'bla', '2020-03-06', '16:28:23'),
-(10, 1, 3, 1, '', '2020-03-06', '16:28:26'),
-(11, 1, 3, 1, '', '2020-03-06', '16:28:29'),
-(12, 1, 3, 1, '', '2020-03-06', '16:28:31'),
-(13, 1, 3, 1, 'all fine', '2020-03-06', '16:31:54'),
-(14, 1, 2, 3, 'que tal', '2020-03-06', '16:32:37'),
-(15, 1, 2, 3, 'todo bien', '2020-03-06', '16:32:43'),
-(16, 1, 2, 3, 'si', '2020-03-06', '16:34:14'),
-(17, 1, 2, 3, 'estás segura?', '2020-03-06', '16:34:40'),
-(18, 1, 4, 5, 'Hola', '2020-03-06', '16:34:52'),
-(19, 1, 1, 8, 'Hola', '2020-03-06', '16:45:15'),
-(21, 3, 1, 1, 'Hola', '2020-03-06', '17:02:57'),
-(22, 3, 1, 1, 'bebé', '2020-03-06', '17:04:27'),
-(23, 1, 3, 1, 'voy', '2020-03-06', '17:04:32'),
-(24, 3, 2, 2, 'Hola', '2020-03-06', '17:13:17'),
-(25, 3, 1, 1, 'ya', '2020-03-06', '17:14:20'),
-(26, 1, 3, 1, 'si', '2020-03-06', '17:15:05'),
-(27, 3, 1, 1, 'segura', '2020-03-06', '17:19:10'),
-(28, 3, 1, 1, 'si', '2020-03-06', '17:22:15'),
-(29, 1, 3, 1, 'ok', '2020-03-06', '17:22:40'),
-(30, 3, 1, 1, 'segura', '2020-03-06', '17:23:28'),
-(31, 1, 3, 1, 'lo dudo', '2020-03-06', '17:23:51'),
-(32, 3, 1, 1, 's', '2020-03-06', '17:24:13'),
-(33, 3, 1, 1, 'yes', '2020-03-06', '17:24:20'),
-(34, 3, 1, 1, 'a ver', '2020-03-06', '17:24:51'),
-(35, 3, 1, 1, 'y sigo aquí', '2020-03-06', '17:25:14'),
-(36, 1, 3, 1, 'sin tu amor', '2020-03-06', '17:25:49'),
-(37, 1, 3, 1, 'there', '2020-03-06', '17:31:16'),
-(38, 1, 3, 1, 'two', '2020-03-06', '17:31:48'),
-(39, 3, 1, 1, 'one', '2020-03-06', '17:32:04'),
-(40, 3, 1, 1, 'cero', '2020-03-06', '17:32:11'),
-(41, 1, 3, 1, 'two', '2020-03-06', '17:32:15'),
-(42, 1, 3, 1, 'alert(\"hola\");', '2020-03-06', '17:32:32'),
-(43, 1, 3, 1, 'alert(\"hola\")', '2020-03-06', '17:32:46'),
-(44, 1, 3, 1, 'no lo puedo evitar', '2020-03-06', '17:33:12'),
-(45, 1, 3, 1, 'fouw', '2020-03-06', '17:33:28'),
-(46, 3, 1, 1, 'i have to get my need', '2020-03-06', '17:33:53'),
-(47, 3, 1, 1, 'verdad', '2020-03-06', '17:35:20'),
-(48, 1, 3, 1, 'yo no sé', '2020-03-06', '17:35:40'),
-(49, 3, 1, 1, 'a', '2020-03-06', '17:36:01'),
-(50, 3, 1, 1, '', '2020-03-06', '17:39:57'),
-(51, 3, 1, 1, 'hola', '2020-03-06', '17:40:12'),
-(52, 3, 1, 1, 'hola', '2020-03-06', '17:41:20'),
-(53, 3, 1, 1, '', '2020-03-06', '17:41:34'),
-(54, 1, 3, 1, 'y es que no te puedo evitar', '2020-03-06', '17:43:02'),
-(55, 3, 1, 1, 'hey', '2020-03-06', '17:44:07'),
-(56, 3, 1, 1, 'hey', '2020-03-06', '17:44:16'),
-(57, 1, 3, 1, 'holi', '2020-03-06', '17:45:27'),
-(58, 3, 1, 1, 'sipi', '2020-03-06', '17:46:51'),
-(59, 1, 3, 1, '', '2020-03-06', '17:48:15'),
-(60, 1, 3, 1, '', '2020-03-06', '17:49:08'),
-(61, 3, 1, 1, 'sip', '2020-03-06', '17:49:17'),
-(62, 1, 3, 1, 'gol', '2020-03-06', '17:52:39'),
-(63, 3, 1, 1, 'sip', '2020-03-06', '17:52:43'),
-(64, 3, 1, 1, 'sip', '2020-03-06', '17:52:52'),
-(65, 3, 1, 1, '', '2020-03-06', '17:53:20'),
-(66, 1, 3, 1, 'holo', '2020-03-06', '17:54:24'),
-(67, 1, 3, 1, 'holo', '2020-03-06', '17:54:32'),
-(68, 1, 3, 1, 'hi', '2020-03-06', '17:54:58'),
-(69, 1, 3, 1, 'hi', '2020-03-06', '17:55:05'),
-(70, 1, 3, 1, 'hi', '2020-03-06', '17:55:43'),
-(71, 1, 3, 1, 'how', '2020-03-06', '17:55:49'),
-(72, 1, 3, 1, 'hi', '2020-03-06', '17:56:15'),
-(73, 1, 3, 1, 'asd', '2020-03-06', '17:58:23'),
-(74, 1, 3, 1, 'asdp', '2020-03-06', '17:58:28'),
-(75, 3, 1, 1, 'asd', '2020-03-06', '18:03:02'),
-(76, 3, 1, 1, 'sseeeeep', '2020-03-06', '18:04:41'),
-(77, 1, 3, 1, 'hola', '2020-03-06', '18:07:19'),
-(78, 1, 3, 1, 'no', '2020-03-06', '18:07:25'),
-(79, 3, 1, 1, 'a ver', '2020-03-06', '18:07:46'),
-(80, 1, 3, 1, 'a ver', '2020-03-06', '18:07:51'),
-(81, 1, 3, 1, 'sd', '2020-03-06', '18:07:55'),
-(82, 3, 1, 1, 'asp', '2020-03-06', '18:10:00'),
-(83, 1, 3, 1, 'hola', '2020-03-06', '18:13:43'),
-(84, 1, 3, 1, 'bien', '2020-03-06', '18:14:18'),
-(89, 3, 1, 1, 'adasd', '2020-03-06', '18:34:33'),
-(92, 1, 3, 1, 'asda', '2020-03-06', '18:34:58'),
-(93, 1, 3, 1, 'asp.net', '2020-03-06', '18:35:06'),
-(94, 1, 3, 1, 'no puedo vivir niii', '2020-03-06', '18:35:28'),
-(95, 3, 1, 1, 'i have to get to my neeed somedays', '2020-03-06', '18:35:38'),
-(96, 1, 3, 1, '', '2020-03-06', '18:37:47'),
-(97, 1, 3, 1, 'cuando', '2020-03-06', '18:38:00'),
-(98, 1, 3, 1, 'nooo', '2020-03-06', '18:38:12'),
-(99, 3, 1, 1, 'i have', '2020-03-06', '18:38:19');
+INSERT INTO `mensajes` (`id_mensaje`, `fk_usuario`, `fk_usuario_para`, `fk_sala`, `mensaje`, `fecha_enviado`, `hora_enviado`, `visto`) VALUES
+(1, 1, 1, 8, 'felio', '2020-03-08', '17:30:32', 0),
+(2, 1, 5, 9, 'felipe', '2020-03-08', '17:32:23', 1),
+(3, 1, 1, 8, 'hola', '2020-03-08', '17:39:24', 1),
+(4, 1, 1, 8, 'como', '2020-03-08', '17:39:29', 0),
+(5, 1, 1, 8, 'estas', '2020-03-08', '17:39:31', 0),
+(6, 5, 1, 9, 'Hola', '2020-03-08', '17:43:58', 1),
+(7, 1, 5, 9, 'hola', '2020-03-08', '17:44:22', 1),
+(8, 1, 5, 9, 'Que tal', '2020-03-08', '18:04:49', 1),
+(9, 1, 5, 9, 'bien', '2020-03-08', '18:06:18', 1),
+(10, 5, 1, 9, 'Prueba Visto', '2020-03-08', '18:20:23', 1),
+(11, 5, 1, 9, 'hey', '2020-03-08', '18:22:02', 1),
+(12, 5, 1, 9, 'hey', '2020-03-08', '18:29:18', 1),
+(13, 5, 1, 9, 'hey', '2020-03-08', '18:29:36', 1),
+(14, 5, 1, 9, 'hola', '2020-03-08', '18:34:22', 1),
+(15, 1, 5, 9, 'Holaaaaaaaa', '2020-03-08', '18:38:23', 1),
+(16, 3, 5, 11, 'Hola', '2020-03-08', '18:40:03', 1),
+(17, 5, 3, 11, 'Hey', '2020-03-08', '18:40:54', 1),
+(18, 3, 5, 11, 'Hola', '2020-03-08', '18:48:39', 1),
+(19, 3, 5, 11, 'Hola', '2020-03-08', '18:52:31', 1),
+(20, 3, 5, 11, 'prueba', '2020-03-08', '18:54:46', 1);
 
 -- --------------------------------------------------------
 
@@ -162,7 +91,10 @@ INSERT INTO `sala` (`id_sala`, `fk_tipo`, `fk_usuario_sala_de`, `fk_usuario_sala
 (5, 1, 1, 4, '2020-03-06 15:57:15'),
 (6, 1, 3, 4, '2020-03-06 16:01:53'),
 (7, 1, 3, 3, '2020-03-06 16:02:26'),
-(8, 1, 1, 1, '2020-03-06 16:45:12');
+(8, 1, 1, 1, '2020-03-06 16:45:12'),
+(9, 1, 5, 1, '2020-03-08 16:32:42'),
+(10, 1, 5, 5, '2020-03-08 16:49:43'),
+(11, 1, 3, 5, '2020-03-08 18:40:00');
 
 -- --------------------------------------------------------
 
@@ -214,8 +146,8 @@ INSERT INTO `tipo_sala` (`id_tipo_sala`, `nombre_tipo_sala`) VALUES
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nick_name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `nombres` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `apellidos` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `nombres` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `apellidos` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `correo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `contra` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `avatar` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -227,10 +159,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nick_name`, `nombres`, `apellidos`, `correo`, `contra`, `avatar`, `fecha_creacion`) VALUES
-(1, 'felio', 'Felipe', 'chacon', 'felipe@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '', '2019-10-19'),
-(2, 'Felioo', 'andres', 'cifuentes', 'felipipe@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '', '2019-10-20'),
-(3, 'juan', 'juan', 'chacon', 'Juan@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '', '2020-03-03'),
-(4, 'Tefaaaaaaa27', 'Avril stefania ', 'soler nieto', 'stefaniasoler57@gmail.com', 'd6ea3305ace3c984c8263b869247304b', '', '2020-03-03');
+(1, 'felio', 'Felipe', 'chacon', 'felipe@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'assets/img/default_user.jpg', '2019-10-19'),
+(2, 'Felioo', 'andres', 'cifuentes', 'felipipe@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'assets/img/default_user.jpg', '2019-10-20'),
+(3, 'juan', 'juan', 'chacon', 'Juan@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'assets/img/default_user.jpg', '2020-03-03'),
+(4, 'Pedro', 'Leon', 'Pedro', 'pedro@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'assets/img/default_user.jpg', '2020-03-03'),
+(5, 'Camilo', 'Juan', 'Camilo', 'camilo@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'assets/img/default_user.jpg', '2020-03-08');
 
 --
 -- Índices para tablas volcadas
@@ -283,13 +216,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `sala_usuario`
@@ -307,7 +240,7 @@ ALTER TABLE `tipo_sala`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
