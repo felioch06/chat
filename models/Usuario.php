@@ -26,7 +26,18 @@
 
         public function consultaMensajesNuevos($fk_usuario_para){
             try{
-                $str = parent::conectar()->prepare("SELECT * FROM usuarios LEFT JOIN mensajes ON usuarios.id_usuario = mensajes.fk_usuario WHERE visto = 0 and fk_usuario_para = ? ORDER BY id_mensaje DESC LIMIT 1 ");
+                $str = parent::conectar()->prepare("SELECT * FROM usuarios LEFT JOIN mensajes ON usuarios.id_usuario = mensajes.fk_usuario WHERE visto = 0 and fk_usuario_para = ? ORDER BY id_mensaje DESC LIMIT 5 ");
+                $str->bindParam(1,$fk_usuario_para,PDO::PARAM_INT);
+                $str->execute();
+                return $str->fetchAll(PDO::FETCH_OBJ);
+            }catch(Exception $e){
+                die('mal'.$e->getMessage());
+            }
+        }
+
+        public function consultaMensajesAntiguos($fk_usuario_para){
+            try{
+                $str = parent::conectar()->prepare("SELECT * FROM usuarios LEFT JOIN mensajes ON usuarios.id_usuario = mensajes.fk_usuario WHERE visto = 1 and fk_usuario_para = ? ORDER BY id_mensaje DESC LIMIT 10 ");
                 $str->bindParam(1,$fk_usuario_para,PDO::PARAM_INT);
                 $str->execute();
                 return $str->fetchAll(PDO::FETCH_OBJ);

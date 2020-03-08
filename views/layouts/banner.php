@@ -5,8 +5,11 @@
   
   <a href="?class=Usuarios&view=mensajes" class="active item">
     Mensajes
-    <?php ?>
-    <i class="ui circle icon"></i>
+    <?php
+      $mensajesUser = parent::mensajesUsuario($_SESSION['nombres']->id_usuario);
+      if(@$mensajesUser->visto == 0){
+    ?>
+    <i class="ui tiny circle icon"></i>
     <?php } ?>
   </a>
 
