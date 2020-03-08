@@ -16,8 +16,15 @@
             $title='Home';
             require_once('views/usuario/index.php');
         }
+        
+        public function mensajes(){
+            $title='Mensajes';
+            require_once('views/usuario/mensajes.php');
+        }
 
         public function newMensaje(){
+
+        
             $fk_usuario = $_SESSION['nombres']->id_usuario;
             $fk_usuario_para = $_REQUEST['id_para'];
             $fk_sala = $_REQUEST['id']; 
@@ -43,6 +50,7 @@
                 header('location:?class=Usuarios&view=index&id='.$searchSala->id_sala.'&id_para='.$id);
             }else{
                 $searchSala = parent::searchSala($mio,$id);
+                parent::updateVisto($id,$mio);
                 header('location:?class=Usuarios&view=index&id='.$searchSala->id_sala.'&id_para='.$id);
             }                 
         }
@@ -53,6 +61,7 @@
                         $mensajes = parent::consultaMensajesUsuario($id); 
                             foreach($mensajes as $r){ 
                         ?>
+
 
                         <?php if($_SESSION['nombres']->id_usuario == $r->fk_usuario){ ?>
                         <div class="sixteen wide column">

@@ -17,11 +17,31 @@
 
             <div class="ten wide column ">
                 <div class="ui stackable grid">
-                    <div class="row mg-30-bottom" id="mensajeResponse">
-                        <?php
-                            $id = @$_REQUEST['id'];
-                            $id_usuario_para = @$_REQUEST['id_para'];
-                        ?>
+                    <?php
+                        if(isset($_REQUEST['id'])){
+                        $id = $_REQUEST['id'];
+                        $id_usuario_para = $_REQUEST['id_para'];
+                        $usuario = parent::consultaUsuariosPorId($id_usuario_para); 
+
+                    ?>
+
+                        <div>
+                            <img class="ui middle aligned tiny mg-10-y circular image" src="<?php echo $usuario->avatar ?>">
+                            <span class="font-30"><b><?php echo strtoupper($usuario->nick_name) ?></b></span>
+                        </div>     
+                        
+                        <?php }else{ ?>
+
+                        <h1 class="title pd-70-top">
+                            <i class="ui left arrow icon"></i>
+                            ¡Busca a alguien para comienza a Hablar!
+                        </h1>
+                        <h1>¡Interactua con tus amigos, busca nuevas amistades y diviertete!</h1>
+                        
+                        <?php } ?>
+                        <div class="row mg-30-bottom" id="mensajeResponse">
+
+                        
 
                         <input type="hidden" value="<?php echo $id ?>" id="id">
                         <input type="hidden" value="<?php echo $id_usuario_para ?>" id="id_usuario_para">

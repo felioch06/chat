@@ -12,6 +12,7 @@
                 die('mal'.$e->getMessage());
             }
         }
+        
 
         public function consulta(){
             try{
@@ -23,6 +24,37 @@
             }
         }
 
+        public function consultaMensajesNuevos($fk_usuario_para){
+            try{
+                $str = parent::conectar()->prepare("SELECT * FROM usuarios LEFT JOIN mensajes ON usuarios.id_usuario = mensajes.fk_usuario WHERE visto = 0 and fk_usuario_para = ? ORDER BY id_mensaje DESC LIMIT 1 ");
+                $str->bindParam(1,$fk_usuario_para,PDO::PARAM_INT);
+                $str->execute();
+                return $str->fetchAll(PDO::FETCH_OBJ);
+            }catch(Exception $e){
+                die('mal'.$e->getMessage());
+            }
+        }
+
+        public function consultaUsuariosPorId($id){
+            try{
+                $str = parent::conectar()->prepare("SELECT * FROM usuarios WHERE id_usuario = $id");
+                $str->execute();
+                return $str->fetch(PDO::FETCH_OBJ);
+            }catch(Exception $e){
+                die('mal'.$e->getMessage());
+            }
+        }
+        
+        public function consultaMensajesUsuario($id_sala){
+            try{
+                $str = parent::conectar()->prepare("SELECT * FROM mensajes WHERE fk_sala = ? ORDER BY id_mensaje DESC");
+                $str->bindParam(1,$id_sala,PDO::PARAM_INT);
+                $str->execute();
+                return $str->fetchAll(PDO::FETCH_OBJ);
+            }catch(Exception $e){
+                die('mal'.$e->getMessage());
+            }
+        }
         public function consultaSala(){
             try{
                 $str = parent::conectar()->prepare("SELECT * FROM sala");
@@ -69,16 +101,6 @@
             }
         }
 
-        public function consultaMensajesUsuario($id_sala){
-            try{
-                $str = parent::conectar()->prepare("SELECT * FROM mensajes WHERE fk_sala = ? ORDER BY id_mensaje DESC");
-                $str->bindParam(1,$id_sala,PDO::PARAM_INT);
-                $str->execute();
-                return $str->fetchAll(PDO::FETCH_OBJ);
-            }catch(Exception $e){
-                die('mal'.$e->getMessage());
-            }
-        }
 
         public function countSala($fk_usuario_sala_de, $fk_usuario_sala_para){
             try{
@@ -118,6 +140,29 @@
               return $q->fetchAll(PDO::FETCH_OBJ);
             }catch(Exception $e){
                die($e->getMessage());
+            }
+        }
+
+        public function mensajesUsuario($fk_usuario_para){
+            try{
+                $str = parent::conectar()->prepare("SELECT * FROM mensajes WHERE fk_usuario_para = ? ORDER BY id_mensaje DESC");
+                $str->bindParam(1,$fk_usuario_para,PDO::PARAM_INT);
+                $str->execute();
+                return $str->fetch(PDO::FETCH_OBJ);
+            }catch(Exception $e){
+                die('mal'.$e->getMessage());
+            }
+        }
+
+
+        public function updateVisto($fk_usuario,$fk_usuario_para){
+            try{
+                $str = parent::conectar()->prepare("UPDATE mensajes SET visto = 1 WHERE fk_usuario = ? AND fk_usuario_para = ?");
+                $str->bindParam(1,$fk_usuario,PDO::PARAM_INT);
+                $str->bindParam(2,$fk_usuario_para,PDO::PARAM_INT);
+                $str->execute();
+            }catch(Exception $e){
+                die('mal'.$e->getMessage());
             }
         }
         

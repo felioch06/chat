@@ -1,7 +1,15 @@
 <div class="ui white secondary pointing banner menu">
-  <a class="active item">
+  <a href="?class=Usuarios&view=index" class="active item">
     Home
   </a>
+  
+  <a href="?class=Usuarios&view=mensajes" class="active item">
+    Mensajes
+    <?php ?>
+    <i class="ui circle icon"></i>
+    <?php } ?>
+  </a>
+
   
   <?php if(isset($_SESSION['nombres'])){ ?>
   <div class="right menu">
